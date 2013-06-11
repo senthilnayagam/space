@@ -1,0 +1,45 @@
+#!/usr/bin/env ruby
+
+
+def usage(s)
+    $stderr.puts(s)
+    $stderr.puts("Usage: #{File.basename($0)}: find replace")
+    exit(2)
+end
+
+if ARGV[0] == nil
+usage("no arguments provided")
+end  
+
+
+  $stdin.each_line do |line|
+$DEBUG = false
+
+(0..10).each do |n|   
+  case ARGV[n]
+    when '-l'  
+      #remove leading whitespace
+      line = line.lstrip
+      puts "leading" if $DEBUG
+    when '-t'  
+      #remove trailing whitespace
+      line = line.rstrip
+        puts "trailing" if $DEBUG
+    when '-a'  
+      #remove leading and trailing whitespace
+      line = line.strip 
+      puts 'all'  if $DEBUG
+    when '-s'  
+      #remove multiple whitespace with single space
+      line = line.squeeze
+      puts 'squeeze' if $DEBUG
+    when nil
+      break 
+    else
+      break
+    #ignore unknowns
+end
+end
+
+    puts line
+  end
