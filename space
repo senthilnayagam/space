@@ -3,7 +3,12 @@
 
 def usage(s)
     $stderr.puts(s)
-    $stderr.puts("Usage: #{File.basename($0)}: find replace")
+    $stderr.puts("Usage: #{File.basename($0)}: commands")
+    $stderr.puts("-l leading whitespace")
+    $stderr.puts("-t trailing whitespace")
+    $stderr.puts("-a leading and trailing whitespace")
+    $stderr.puts("-s squeeze (replace multiple repeated whitespace with single whitespace character)")
+    $stderr.puts("-s -l you can do multiple operations together(upto 5)")
     exit(2)
 end
 
@@ -15,7 +20,7 @@ end
   $stdin.each_line do |line|
 $DEBUG = false
 
-(0..10).each do |n|   
+(0..5).each do |n|   
   case ARGV[n]
     when '-l'  
       #remove leading whitespace
